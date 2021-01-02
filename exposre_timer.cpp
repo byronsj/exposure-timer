@@ -66,11 +66,12 @@ void check_buttons()
               lcd.setCursor(11, 1);
               lcd.print(dose);
             }
+            delay(50);
             break;
         case 1:
             //up
             if (state == 1){
-                alarm += 1;
+                alarm += 100;
             }
             delay(50);
             break;
@@ -78,13 +79,17 @@ void check_buttons()
             //down
 
             if (state == 1){
-                alarm -= 1;
+                alarm -= 100;
             }
             delay(50);
             break;
         case 3:
             //left
-
+            if (state == 1){
+                alarm += 500;
+            }
+            delay(50);
+            break;
         case 4:
             //select
             if (state == 2)
