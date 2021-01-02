@@ -43,21 +43,16 @@ void setup()
 //buzzer    
 
 // timer function
-    void timer()
-{   if (alarm < 0 )
-    {
-        state = 2;
+void timer() {
+  if (alarm < 0) {
+    state = 2;
+  } else if (state == 0) {
+    dose += I / 2;
+    if (alarm > 0) {
+      alarm -= I / 2;
     }
-    else if (state == 0)
-    {
-        dose += I/2;
-        if (alarm > 0)
-        {
-            alarm -= I/2;
-        }
-    }
+  }
 }
-
 
 //setup button fuctions
 void check_buttons()
@@ -66,11 +61,10 @@ void check_buttons()
     {
         case 0:
             //right
-            if( state = 1)
-            {
-                dose = 0;
-                lcd.setCursor(11,1);
-                lcd.print(dose);
+            if (state = 1) {
+              dose = 0;
+              lcd.setCursor(11, 1);
+              lcd.print(dose);
             }
             break;
         case 1:
@@ -98,13 +92,10 @@ void check_buttons()
             {
                 state = 0;
                 alarm = 0;
-            }
-            else if (state == 1)
-            {
-                state = 0;
-            } else
-            {
-                state ++;
+            } else if (state == 1) {
+              state = 0;
+            } else {
+              state++;
             }
             delay(50);
             break;
