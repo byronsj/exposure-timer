@@ -69,7 +69,6 @@ void check_buttons()
             break;
         case 1:
             //up
-
             if (state == 1){
                 alarm += 1;
             }
@@ -114,7 +113,6 @@ void update_lcd()
         lcd.print(alarm);
     } else if (state == 1){
         lcd.print("set    ");
-
         lcd.setCursor(0,1);
         lcd.print(alarm);
     } else if (state == 2){
