@@ -44,7 +44,7 @@ void setup()
 
 // timer function
     void timer()
-{   if (alarm < 0)
+{   if (alarm < 0 )
     {
         state = 2;
     }
@@ -66,7 +66,7 @@ void check_buttons()
     {
         case 0:
             //right
-            if(state = 1)
+            if( state = 1)
             {
                 dose = 0;
                 lcd.setCursor(11,1);
@@ -97,7 +97,8 @@ void check_buttons()
             if (state == 2)
             {
                 state = 0;
-                alarm = 0;}
+                alarm = 0;
+            }
             else if (state == 1)
             {
                 state = 0;
