@@ -26,7 +26,6 @@ double I = 0;
 double dose = 0;
 const double I_norm = (double) 100/65535;
 static char Istr[5];
-static char Estr[6];
 void setup()
 {
 
@@ -41,17 +40,18 @@ void setup()
 
 }
 //buzzer    
+//TODO: set buuzzer pins and time
 
 // timer function
 void timer() {
-  if (alarm < 0) {
-    state = 2;
-  } else if (state == 0) {
-    dose += I / 2;
-    if (alarm > 0) {
-      alarm -= I / 2;
+    if (alarm < 0) {
+        state = 2;
+    } else if (state == 0) {
+        dose += I / 2;
+        if (alarm > 0) {
+            alarm -= I / 2;
+        }
     }
-  }
 }
 
 //setup button fuctions
@@ -61,10 +61,12 @@ void check_buttons()
     {
         case 0:
             //right
-            if (state = 1) {
-              dose = 0;
-              lcd.setCursor(11, 1);
-              lcd.print(dose);
+            if (state == 1) {
+                alarm = 0;
+                lcd.setCursor(0,1);
+                dose = 0;
+                lcd.setCursor(11, 1);
+                lcd.print(dose);
             }
             delay(50);
             break;
@@ -97,9 +99,9 @@ void check_buttons()
                 state = 0;
                 alarm = 0;
             } else if (state == 1) {
-              state = 0;
+                state = 0;
             } else {
-              state++;
+                state++;
             }
             delay(50);
             break;
@@ -111,7 +113,7 @@ void update_lcd()
     lcd.setCursor(0,0);
 
     if ( state == 0){
-        lcd.print("running");
+        lcd.print("run  ");
         lcd.setCursor(11,1);
         lcd.print(dose);
         lcd.setCursor(0,1);
