@@ -9,13 +9,6 @@ int adc_key_val[5] ={50, 200, 400, 600, 800 };
 int NUM_KEYS = 5;
 int adc_key_in;
 int key=-1; 
-
-// Define variables for start time and operating duration
-long start = 0;
-long time = 0;
-long dose_time = 0;
-int minutes = 0;
-int seconds = 0;
 int state = 1;
 double alarm = 0;
 
@@ -26,6 +19,7 @@ double I = 0;
 double dose = 0;
 const double I_norm = (double) 100/65535;
 static char Istr[5];
+
 void setup()
 {
 
@@ -61,8 +55,6 @@ void check_buttons()
                 alarm = 0;
                 dose = 0;
                 lcd.clear();
-                //lcd.setCursor(11, 1);
-                //lcd.print(dose);
             }
             delay(50);
             break;
