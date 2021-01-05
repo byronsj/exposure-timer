@@ -31,9 +31,6 @@ void setup()
 
     // Initialize LCD
     lcd.begin(16, 2);
-    //    lcd.print("T 00m00s I 0.000");
-    //    lcd.setCursor(0, 1);
-    //    lcd.print("Dose 0.0000");
 
     // Initiliaze the UV sensor and set integration time to 500ms
     uv.begin(VEML6070_4_T);
@@ -42,7 +39,6 @@ void setup()
 //buzzer    
 //TODO: set buuzzer pins and time
 
-// timer function
 void timer() {
     if (alarm < 0) {
         state = 2;
@@ -63,10 +59,10 @@ void check_buttons()
             //right
             if (state == 1) {
                 alarm = 0;
-                lcd.setCursor(0,1);
                 dose = 0;
-                lcd.setCursor(11, 1);
-                lcd.print(dose);
+                lcd.clear();
+                //lcd.setCursor(11, 1);
+                //lcd.print(dose);
             }
             delay(50);
             break;
@@ -110,19 +106,19 @@ void check_buttons()
 // update lcd
 void update_lcd()
 {
-    lcd.setCursor(0,0);
+    lcd.setCursor(0,1);
+    lcd.print(alarm);
+    lcd.setCursor(11,1);
+    lcd.print(dose);
 
     if ( state == 0){
+        lcd.setCursor(0,0);
         lcd.print("run  ");
-        lcd.setCursor(11,1);
-        lcd.print(dose);
-        lcd.setCursor(0,1);
-        lcd.print(alarm);
     } else if (state == 1){
+        lcd.setCursor(0,0);
         lcd.print("set    ");
-        lcd.setCursor(0,1);
-        lcd.print(alarm);
     } else if (state == 2){
+        lcd.setCursor(0,0);
         lcd.print("buzzer ");
     }
 
